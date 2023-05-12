@@ -1,3 +1,1 @@
-Service account was created in original account that was to be split into Production environment. This service account was given ReadOnlyAccess to all AWS resources in the account. It was then linked to Former2, a free CloudFormation/Terraform template creator. 
-All required resources were selected in Former2 and combined to make a .YAML template. This template was saved and then uploaded to AWS CloudFormation on the destination prod account. CloudFormation job was executed and created all resources.
-Service account was created for S3 Batch Job. 
+AWS Resource Explorer was ran inside of the source account to determine all of the resources and regions that needed to be migrated to the Prod environment.
