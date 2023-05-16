@@ -20,4 +20,12 @@ The most common networking items you will need to configure are recreating the r
 If there are any issues with it, the Reachability Analyzer is a great tool to discover where the connection dropped along the way. In my testing, I discovered that Control Tower created a couple VPCs and made them default.
 This caused an issue where, when the stack said !Ref EC2VPC, it referenced the default VPC. This VPC did not have an IGW attached so the reachability analyzer told me the connection never reached the IGW. 
 The bandaid solution was to swap the IGW to the default VPC. The correct solution would be to change the VPC that was attached to the instance. This can all be done when you are doing live transfers, however.
-Once the EC2 instance is up an running, the next item to do is to transfer your data from source EC2 to destination EC2. 
+Once the EC2 instance is up an running, the next item to do is to transfer your data from source EC2 to destination EC2. There are two ways that this can be done. SCP with VPC Peering or external SSH.
+SCP WITH VPC IS A WORK IN PROGRESS. UPDATE THIS LINE WHEN COMPLETE.
+External SSH involves simply connecting to the instance and copying all data onto the local device. Then SSH into the new EC2 and copy data from local device to the new instance. WinSCP is what I used for this.
+All it requires is that you specify a key pair when creating both instances. That is how you authenticate your connection to the instsance. Make sure to specify the key in the advanced settings if using WinSCP.
+Now, you should have a fully replicated EC2 instance in prod. Once ready and given the green light by the prod team, the original EC2 instance in the parent environment should be terminated.
+That leaves us with S3 as the next resourece migration. To begin, create new buckets in prod environment that have similar but different names. Recall that names must be globally unique.
+One thing to make note of, bucket transference require a single operation to be done on each individual bucket. If you have a lot of buckets, this can take some time. I would look at tools such as Terraform to see if it can be automated.
+The process is as follows: Create an inventory report of the original bucket. Configure the inventory report to be placed in the destination bucket. Create a batch job that takes the inventory report manifest and performs a copy.
+This copy job will copy all files and folders from bucket A to B. Maintaining file/folder hierarchy structure. Once complete, you may delete the inventory report unless you need to continuously replicate buckets for your scenario.
