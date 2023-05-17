@@ -1,0 +1,7 @@
+When creating control policies for users inside of the company, a CloudTrail Log was enabled to monitor their access under current permissions over 90 days. Regular access records were also analyzed.
+A CloudTrail policy was generated for a few users to test out the feature (found under the IAM user panel) but it appeared to provide more access than was necessary. Every service the user had visited was added onto the policy.
+This was not good because the objective is to limit the scope of access, not to increase it. Therefore, the cloudtrail policy was scrapped in favor of manually writing policies. This was effective for a small user list.
+It was further simplified by creating policies for groups instead of for individual users. This still involved a lot of trial and error. First, the user policies were created for a select few that I could have "run around".
+Then, I would have the user simulate a normal day on AWS, screenshot any errors they receive, and send them back to me. From there, I would ask for a use case for the service as well as any other access they need inside the service.
+I did this for all users. Once that was done, the groups were created. I was able to merge some of the individual policies into the policies for the group itself. The users were split into groups determined by their role in the company.
+Once the groups were created and the policies applied, 
