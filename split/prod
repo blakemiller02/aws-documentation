@@ -29,3 +29,4 @@ That leaves us with S3 as the next resourece migration. To begin, create new buc
 One thing to make note of, bucket transference require a single operation to be done on each individual bucket. If you have a lot of buckets, this can take some time. I would look at tools such as Terraform to see if it can be automated.
 The process is as follows: Create an inventory report of the original bucket. Configure the inventory report to be placed in the destination bucket. Create a batch job that takes the inventory report manifest and performs a copy.
 This copy job will copy all files and folders from bucket A to B. Maintaining file/folder hierarchy structure. Once complete, you may delete the inventory report unless you need to continuously replicate buckets for your scenario.
+FILL OUT FOR REMAINING RESOURCES HERE
