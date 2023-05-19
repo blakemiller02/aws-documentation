@@ -1,0 +1,17 @@
+An SNS topic was created to properly distribute all changes per-environment. A new topic is created for each environment, as well as a new appropriate subscriber list.
+Change notifications are sent out (1) week prior to each change. Bigger changes should have longer notification windows with reminders between first contact and change.
+Changes are sent out in the following format:
+
+CHANGE NOTICE
+DATE OF CHANGE: "MM/DD/YY"
+
+Desctription:
+*Enter description here*
+
+Reason:
+*Enter reason here*
+
+Impact:
+*Enter impact here*
+
+All changes are published to the topic board and pushed out to all subscribers. Phone numbers may be set up if needed. Currently, one Toll free number is in use for emergency notifications only.
