@@ -1,0 +1,3 @@
+Cloudwatch alarms have been created in the event that we are not receiving data from certain endpoints. Especially in a time-sensitive manner.
+One alarm that is in place that I developed reads a Kinesis metric that maps the success rate of reading in records. The metric is between 0 and 1 but our data flows in every 60 seconds so there is some fluctuation.
+The alarm is set to publish to a specific SNS topic if the metric falls below 0.9. The topic has email subscribers as well as SMS subscribers so that anyone can be notified regardless of time or place.
