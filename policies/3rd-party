@@ -1,0 +1,7 @@
+Our AWS environment has 3rd party technicians that work in it daily. Thus, there was a great need for an access policy for these technicians for a couple of reasons. 
+First, they operate under a different ruleset since they are an independent company. Second, they are based out of different countries, and therefore have different backgrounds in regards to cyber laws.
+Though American Cyber Laws are enforced on all American property, there is always a window of error. The policies for these technicians were created in a similar manner to the in-house policies.
+Access logs were analyzed as well as the cloudtrail log to see what they had accessed over 90 days. They were then asked about specific job functions and what services they required. 
+For each service, they included why they needed access to the service. After that, policies were created and tested over a period of a couple months. Access errors were reported and fixed.
+After all that was done, the policies had been fully formed and were ready to be applied to the group for the technicians. The only issue was, the whitespace limit was not enough for one big policy.
+The solution to this was to separate the policy. One policy includes all the full access policies. While the other contains the more granular policies. This allows some form of organization when reading policies.
