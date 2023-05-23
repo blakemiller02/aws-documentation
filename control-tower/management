@@ -1,0 +1,4 @@
+Managing in control tower is not as granular as from individual accounts but it is still beneficial for multiple tasks. One of these tasks being Sign-in access. 
+From your account list in Control Tower, you can assign specific groups and users access to different accounts. You will need to create groups and users for this, however. 
+Once the groups and users are created, you may assign them to the account and assign a permissions set alongside that. You can also created your own permission set to go alongside or instead of an AWS permission set.
+Another thing you can manage is region control. You can apply settings that block data from specific regions and allows from other regions. You can set this to apply to OUs or to the entire organization.
