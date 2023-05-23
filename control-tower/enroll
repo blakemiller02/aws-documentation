@@ -1,0 +1,24 @@
+Enrolling in Control Tower is a great way to manage an AWS organization that has multiple accounts. It allows you to apply controls to all accounts as well as organize them into OUs.
+To set it up, all you need to do is sign into your management account and enable your landing zone. The landing zone is where the heart of control tower will be. Your root account.
+Once your landing zone has been created, you can then move on to organizing your accounts. If you have just one or two accounts, this can be as simple as one OU for your other account. 
+Typically, your root account stays in place in control tower. Only non-root accounts can be moved around or put into OUs. You can also create new accounts and OUs inside of control tower.
+If you are creating an account, just fill in the blanks that it asks for and kick off the creation. The only error I ran into when creating an account was lack of ControlTowerExecution Role.
+This role needs to be created AFTER the account is created. Control tower will create the account but sometimes it is unable to provision that role. The role allows your root account to manage sub-accounts.
+To create this role, go to the sub-account, go to IAM > Roles > Create Role. Select EC2 Service, name it AWSControlTowerExecution, then create role. Once it's created, go to the policy and edit the JSON.
+
+{
+   "Version":"2012-10-17",
+   "Statement":[
+      {
+      "Effect":"Allow",
+      "Principal":{
+         "AWS": "arn:aws:iam::Management Account ID:root"
+         },
+         "Action": "sts:AssumeRole",
+         "Condition": {} 
+      }
+   ]
+  }
+  
+  Change Management Account ID and root.
+  After that, go to organization on control tower back on the root account and select the sub-account, then Enroll.
